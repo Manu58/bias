@@ -1,0 +1,56 @@
+\documentclass[a4paper,10pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\newcommand{\vev}[1]{ \left\langle #1 \right\rangle}
+%opening
+\title{Understanding dof in statistics}
+\author{Marc Emanuel}
+
+\begin{document}
+
+\maketitle
+When estimating the population mean from a sample of iid's it is easy to show that  the sample mean an unbiased estimate of the population mean is. It is what you intuitively also expect, since the population mean is nothing but the average of that sample that is the whole population. And each member has the same mean expectation value. Thus the sample mean is unbiased when defined as 
+\begin{align}
+\hat{\mu}:=(\sum_s x_i )/n  \label{eq:meansamp}
+\end{align}
+That it is unbiased is another way for saying that the expectation value (average under the population distribution) is equal to the population mean and does not depend on the sample size:
+\begin{align*}
+  \vev{\hat{\mu}}&=\frac{1}{n} \sum_{i=1}^n\vev{x_i} 
+\end{align*}
+(The brackets denote expectation value, old habit)
+
+The sample estimate of the population variance  on the other hand is defined as the accumulated sample variance divided by $n-1$. As  reason  it is often stated that the degrees of freedom are one less than the sample size. That sounds pretty vague and not really correct, while it is easy in words to explain why this is needed and pretty straightforward to show precisely that this is the case:
+
+So the claim is : the right ``unbiased'' definition for  the Estimate of the population variance from the measurement of a sample of size $n$  is
+\begin{align}
+  \hat{v} &= \frac{1}{n-1}\sum_{i=1}^n (x_i-\hat{\mu})^2 \label{eq:varsamp}
+\end{align}
+And now for the reason.: it is the use of the estimate of the population mean that does it. The number of degrees of freedom are in fact $n$ but the sample estimate of the mean, although unbiased, is not an independent quantity. It is defined as a linear combination of an estimate calculated in terms of the same set of data, namely the sample$\{x_i\}$ .  Now this set consists of $n$ stochastic variables that totally independently fluctuate hence the $n$-degrees of freedom. Lets say we keep $x_2-x_n$ fixed  and we just sample $x_1$ over and over again slowly $x_1$ explores the real line (in case of a normal distribution), you could say in the $X_1$ direction, but while exploring its direction, the sample mean is $100\%$  correlated with it.  You could also say that in the proposed setting $x_1$ has no freedom anymore, but is determined by the rest of the sample and the mean
+That is the deeper reason of the loss of one degree of freedom. To see this mathematically we will have to compare the sample estimate with the true variance of the population:
+\begin{align}
+  \vev{v}= \vev{(x-\vev{x})^2} = \vev{x^2}-\vev{x}^2\label{eq:var}
+\end{align}
+The last expression will be our target
+Now we  write the sample  estimate~(\ref{eq:varsamp}) out in the sample elements only using Eq,~(\ref{eq:meansamp})
+\begin{align*}
+ \vev{\hat{v}} & =   \frac{1}{n-1}\sum_{i=1}^n \vev{(x_i- \frac{1}{n}\sum_{j=1}^nx_j)^2}\\
+ \intertext{expand the square and use linearity of  integration}
+  & =   \frac{1}{n-1}\sum_{i=1}^n\left[ \vev{x_i^2}- 2\frac{1}{n}\sum_{j=1}^n\vev{x_ix_j}   +\frac{1}{n^2}\sum_{j=1}^n\sum_{k=1}^n\vev{x_jx_k}\right]
+\end{align*}
+Since the $x_i$ are idd
+\begin{align*}
+\vev{x_ix_j}&=\begin{cases}
+               \vev{x_i}\vev{x_j}= \vev{x}^2& \text{if }i\neq j\\
+                \vev{x_i^2}=\vev{x^2}&  \text{if }i=j
+              \end{cases}
+\end{align*}
+and thus from Eq.~\eqref{eq:var}
+\begin{align*}
+  \vev{\hat{v}} & =    \frac{n}{n-1}\left[ \vev{x^2}- 2\frac{1}{n}(\vev{x^2}+(n-1)\vev{x}^2)   +\frac{1}{n}(\vev{x^2}+(n-1)\vev{x}^2)\right] =\vev{v}
+\end{align*}
+q.e.d.
+Note that if we want to estimate another function of the stochastic variable $x$ that depends on the population mean and variance (or standard deviation) the sample estimate loses two dof's. 
+And if you are still not convinced ,think about how to estimate the variance from a sample of size one (it is zero).
+\end{document}
