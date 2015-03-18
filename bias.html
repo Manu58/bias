@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="generator" content="hevea 2.16">
+<style type="text/css">
+.li-itemize{margin:1ex 0ex;}
+.li-enumerate{margin:1ex 0ex;}
+.dd-description{margin:0ex 0ex 1ex 4ex;}
+.dt-description{margin:0ex;}
+.toc{list-style:none;}
+.footnotetext{margin:0ex; padding:0ex;}
+div.footnotetext P{margin:0px; text-indent:1em;}
+.thefootnotes{text-align:left;margin:0ex;}
+.dt-thefootnotes{margin:0em;}
+.dd-thefootnotes{margin:0em 0em 0em 2em;}
+.footnoterule{margin:1em auto 1em 0px;width:50%;}
+.caption{padding-left:2ex; padding-right:2ex; margin-left:auto; margin-right:auto}
+.title{margin:2ex auto;text-align:center}
+.titlemain{margin:1ex 2ex 2ex 1ex;}
+.titlerest{margin:0ex 2ex;}
+.center{text-align:center;margin-left:auto;margin-right:auto;}
+.flushleft{text-align:left;margin-left:0ex;margin-right:auto;}
+.flushright{text-align:right;margin-left:auto;margin-right:0ex;}
+div table{margin-left:inherit;margin-right:inherit;margin-bottom:2px;margin-top:2px}
+td table{margin:auto;}
+table{border-collapse:collapse;}
+td{padding:0;}
+.cellpadding0 tr td{padding:0;}
+.cellpadding1 tr td{padding:1px;}
+pre{text-align:left;margin-left:0ex;margin-right:auto;}
+blockquote{margin-left:4ex;margin-right:4ex;text-align:left;}
+td p{margin:0px;}
+.boxed{border:1px solid black}
+.textboxed{border:1px solid black}
+.vbar{border:none;width:2px;background-color:black;}
+.hbar{border:none;height:2px;width:100%;background-color:black;}
+.hfill{border:none;height:1px;width:200%;background-color:black;}
+.vdisplay{border-collapse:separate;border-spacing:2px;width:auto; empty-cells:show; border:2px solid red;}
+.vdcell{white-space:nowrap;padding:0px; border:2px solid green;}
+.display{border-collapse:separate;border-spacing:2px;width:auto; border:none;}
+.dcell{white-space:nowrap;padding:0px; border:none;}
+.dcenter{margin:0ex auto;}
+.vdcenter{border:solid #FF8000 2px; margin:0ex auto;}
+.minipage{text-align:left; margin-left:0em; margin-right:auto;}
+.marginpar{border:solid thin black; width:20%; text-align:left;}
+.marginparleft{float:left; margin-left:0ex; margin-right:1ex;}
+.marginparright{float:right; margin-left:1ex; margin-right:0ex;}
+.theorem{text-align:left;margin:1ex auto 1ex 0ex;}
+.part{margin:2ex auto;text-align:center}
+</style>
+<title>Understanding dof in statistics
+</title>
+</head>
+<body >
+<!--HEVEA command line is: /usr/bin/hevea bias.tex -->
+<!--CUT STYLE article--><!--CUT DEF section 1 --><table class="title"><tr><td style="padding:1ex"><h1 class="titlemain">Understanding dof in statistics</h1><h3 class="titlerest">Marc Emanuel</h3></td></tr>
+</table><p>When estimating the population mean from a sample of iid’s it is easy to show that the sample mean an unbiased estimate of the population mean is. It is what you intuitively also expect, since the population mean is nothing but the average of that sample that is the whole population. And each member has the same mean expectation value. Thus the sample mean is unbiased when defined as 
+</p><table class="display dcenter"><tr style="vertical-align:middle"><td class="dcell">
+     
+
+</td><td class="dcell"><table style="border-spacing:6px;border-collapse:separate;" class="cellpading0"><tr><td style="text-align:right;white-space:nowrap" ><table class="display"><tr style="vertical-align:middle"><td class="dcell"><table class="display"><tr><td class="dcell" style="text-align:center">^</td></tr>
+<tr><td class="dcell" style="text-align:center">µ</td></tr>
+<tr><td class="dcell" style="text-align:center">&nbsp;</td></tr>
+</table></td><td class="dcell">:=</td><td class="dcell"><table class="display"><tr><td class="dcell" style="text-align:center">1</td></tr>
+<tr><td class="hbar"></td></tr>
+<tr><td class="dcell" style="text-align:center"><span style="font-style:italic">n</span></td></tr>
+</table></td><td class="dcell"><table class="display"><tr><td class="dcell" style="text-align:center">&nbsp;</td></tr>
+<tr><td class="dcell" style="text-align:center"><span style="font-size:xx-large">∑</span></td></tr>
+<tr><td class="dcell" style="text-align:center"><span style="font-style:italic">s</span></td></tr>
+</table></td><td class="dcell"> <span style="font-style:italic">x</span><sub><span style="font-style:italic">i</span></sub>   <a id="eq:meansamp"> </a>
+</td></tr>
+</table></td><td style="text-align:left;white-space:nowrap" >&nbsp;</td><td style="text-align:right;white-space:nowrap" >&nbsp;</td><td style="text-align:left;white-space:nowrap" >&nbsp;</td><td style="text-align:right;white-space:nowrap" >&nbsp;</td><td style="text-align:left;white-space:nowrap" >&nbsp;</td><td style="text-align:right;white-space:nowrap" >&nbsp;</td><td style="text-align:left;white-space:nowrap" >&nbsp;</td><td style="text-align:right;white-space:nowrap" >&nbsp;</td><td style="text-align:left;white-space:nowrap" >&nbsp;</td><td style="text-align:right;white-space:nowrap" >    (1)</td></tr>
+</table></td></tr>
+</table><p>
+That it is unbiased is another way for saying that the expectation value (average under the population distribution) is equal to the population mean and does not depend on the sample size:
+</p><table class="display dcenter"><tr style="vertical-align:middle"><td class="dcell">
+     
+
+</td><td class="dcell"><table style="border-spacing:6px;border-collapse:separate;" class="cellpading0"><tr><td style="text-align:right;white-space:nowrap" ><table class="display"><tr style="vertical-align:middle"><td class="dcell">  ⟨ </td><td class="dcell"><table class="display"><tr><td class="dcell" style="text-align:center">^</td></tr>
+<tr><td class="dcell" style="text-align:center">µ</td></tr>
+<tr><td class="dcell" style="text-align:center">&nbsp;</td></tr>
+</table></td><td class="dcell">⟩ </td></tr>
+</table></td><td style="text-align:left;white-space:nowrap" ><table class="display"><tr style="vertical-align:middle"><td class="dcell">=</td><td class="dcell"><table class="display"><tr><td class="dcell" style="text-align:center">1</td></tr>
+<tr><td class="hbar"></td></tr>
+<tr><td class="dcell" style="text-align:center"><span style="font-style:italic">n</span></td></tr>
+</table></td><td class="dcell"> </td><td class="dcell"><table class="display"><tr><td class="dcell" style="text-align:center"><span style="font-style:italic">n</span></td></tr>
+<tr><td class="dcell" style="text-align:center"><span style="font-size:xx-large">∑</span></td></tr>
+<tr><td class="dcell" style="text-align:center"><span style="font-style:italic">i</span>=1</td></tr>
+</table></td><td class="dcell">⟨ <span style="font-style:italic">x</span><sub><span style="font-style:italic">i</span></sub>⟩  
+</td></tr>
+</table></td><td style="text-align:right;white-space:nowrap" >&nbsp;</td><td style="text-align:left;white-space:nowrap" >&nbsp;</td><td style="text-align:right;white-space:nowrap" >&nbsp;</td><td style="text-align:left;white-space:nowrap" >&nbsp;</td><td style="text-align:right;white-space:nowrap" >&nbsp;</td><td style="text-align:left;white-space:nowrap" >&nbsp;</td><td style="text-align:right;white-space:nowrap" >&nbsp;</td><td style="text-align:left;white-space:nowrap" >&nbsp;</td><td style="text-align:right;white-space:nowrap" >&nbsp;</td></tr>
+</table></td></tr>
+</table><p>
+(The brackets denote expectation value, old habit)</p><p>The sample estimate of the population variance on the other hand is defined as the accumulated sample variance divided by <span style="font-style:italic">n</span>−1. As reason it is often stated that the degrees of freedom are one less than the sample size. That sounds pretty vague and not really correct, while it is easy in words to explain why this is needed and pretty straightforward to show precisely that this is the case.
+So the claim is : the right “unbiased” definition for the Estimate of the population variance from the measurement of a sample of size <span style="font-style:italic">n</span> is
+</p><table class="display dcenter"><tr style="vertical-align:middle"><td class="dcell">
+     
+
+</td><td class="dcell"><table style="border-spacing:6px;border-collapse:separate;" class="cellpading0"><tr><td style="text-align:right;white-space:nowrap" ><table class="display"><tr style="vertical-align:middle"><td class="dcell">  </td><td class="dcell"><table class="display"><tr><td class="dcell" style="text-align:center">^</td></tr>
+<tr><td class="dcell" style="text-align:center"><span style="font-style:italic">v</span></td></tr>
+<tr><td class="dcell" style="text-align:center">&nbsp;</td></tr>
+</table></td></tr>
+</table></td><td style="text-align:left;white-space:nowrap" ><table class="display"><tr style="vertical-align:middle"><td class="dcell">= </td><td class="dcell"><table class="display"><tr><td class="dcell" style="text-align:center">1</td></tr>
+<tr><td class="hbar"></td></tr>
+<tr><td class="dcell" style="text-align:center"><span style="font-style:italic">n</span>−1</td></tr>
+</table></td><td class="dcell"><table class="display"><tr><td class="dcell" style="text-align:center"><span style="font-style:italic">n</span></td></tr>
+<tr><td class="dcell" style="text-align:center"><span style="font-size:xx-large">∑</span></td></tr>
+<tr><td class="dcell" style="text-align:center"><span style="font-style:italic">i</span>=1</td></tr>
+</table></td><td class="dcell"> (<span style="font-style:italic">x</span><sub><span style="font-style:italic">i</span></sub>−</td><td class="dcell"><table class="display"><tr><td class="dcell" style="text-align:center">^</td></tr>
+<tr><td class="dcell" style="text-align:center">µ</td></tr>
+<tr><td class="dcell" style="text-align:center">&nbsp;</td></tr>
+</table></td><td class="dcell">)<sup>2</sup> <a id="eq:varsamp"> </a>
+</td></tr>
+</table></td><td style="text-align:right;white-space:nowrap" >&nbsp;</td><td style="text-align:left;white-space:nowrap" >&nbsp;</td><td style="text-align:right;white-space:nowrap" >&nbsp;</td><td style="text-align:left;white-space:nowrap" >&nbsp;</td><td style="text-align:right;white-space:nowrap" >&nbsp;</td><td style="text-align:left;white-space:nowrap" >&nbsp;</td><td style="text-align:right;white-space:nowrap" >&nbsp;</td><td style="text-align:left;white-space:nowrap" >&nbsp;</td><td style="text-align:right;white-space:nowrap" >    (2)</td></tr>
+</table></td></tr>
+</table><p>
+And now for the reason.: it is the use of the estimate of the population mean that does it. The number of degrees of freedom are in fact <span style="font-style:italic">n</span> but the sample estimate of the mean, although unbiased, is not an independent quantity. It is defined as a linear combination of an estimate calculated in terms of the same set of data, namely the sample {<span style="font-style:italic">x</span><sub><span style="font-style:italic">i</span></sub>} . Now this set consists of <span style="font-style:italic">n</span> stochastic variables that totally independently fluctuate hence the <span style="font-style:italic">n</span>-degrees of freedom. Lets say we keep <span style="font-style:italic">x</span><sub>2</sub>−<span style="font-style:italic">x</span><sub><span style="font-style:italic">n</span></sub> fixed and we just sample <span style="font-style:italic">x</span><sub>1</sub> over and over again. Slowly <span style="font-style:italic">x</span><sub>1</sub> explores the real line (in case of a normal distribution), you could say in the <span style="font-style:italic">X</span><sub>1</sub> direction, but while exploring its direction, the sample mean is 100% correlated with it. You could also say that in the proposed setting <span style="font-style:italic">x</span><sub>1</sub> has no freedom anymore, but is determined by the rest of the sample and the mean
+That is the deeper reason of the loss of one degree of freedom. To see this mathematically we will have to compare the sample estimate with the true variance of the population:
+</p><table class="display dcenter"><tr style="vertical-align:middle"><td class="dcell">
+     
+
+</td><td class="dcell"><table style="border-spacing:6px;border-collapse:separate;" class="cellpading0"><tr><td style="text-align:right;white-space:nowrap" >  ⟨ <span style="font-style:italic">v</span> ⟩ = ⟨ (<span style="font-style:italic">x</span>−⟨ <span style="font-style:italic">x</span>⟩ )<sup>2</sup> ⟩  = ⟨ <span style="font-style:italic">x</span><sup>2</sup> ⟩ −⟨ <span style="font-style:italic">x</span>⟩ <sup>2</sup><a id="eq:var"> </a>
+</td><td style="text-align:left;white-space:nowrap" >&nbsp;</td><td style="text-align:right;white-space:nowrap" >&nbsp;</td><td style="text-align:left;white-space:nowrap" >&nbsp;</td><td style="text-align:right;white-space:nowrap" >&nbsp;</td><td style="text-align:left;white-space:nowrap" >&nbsp;</td><td style="text-align:right;white-space:nowrap" >&nbsp;</td><td style="text-align:left;white-space:nowrap" >&nbsp;</td><td style="text-align:right;white-space:nowrap" >&nbsp;</td><td style="text-align:left;white-space:nowrap" >&nbsp;</td><td style="text-align:right;white-space:nowrap" >    (3)</td></tr>
+</table></td></tr>
+</table><p>
+The last expression will be our target
+Now we write the sample estimate (<a href="#eq%3Avarsamp">2</a>) out in the sample elements only using Eq, (<a href="#eq%3Ameansamp">1</a>)
+</p><table class="display dcenter"><tr style="vertical-align:middle"><td class="dcell">⟨ </td><td class="dcell"><table class="display"><tr><td class="dcell" style="text-align:center">^</td></tr>
+<tr><td class="dcell" style="text-align:center"><span style="font-style:italic">v</span></td></tr>
+<tr><td class="dcell" style="text-align:center">&nbsp;</td></tr>
+</table></td><td class="dcell"> ⟩ =</td><td class="dcell"><table class="display"><tr><td class="dcell" style="text-align:center">1</td></tr>
+<tr><td class="hbar"></td></tr>
+<tr><td class="dcell" style="text-align:center"><span style="font-style:italic">n</span> − 1</td></tr>
+</table></td><td class="dcell"><table class="display"><tr><td class="dcell" style="text-align:center"><span style="font-style:italic">n</span></td></tr>
+<tr><td class="dcell" style="text-align:center"><span style="font-size:xx-large">∑</span></td></tr>
+<tr><td class="dcell" style="text-align:center"><span style="font-style:italic">i</span>=1</td></tr>
+</table></td><td class="dcell"> ⟨ (<span style="font-style:italic">x</span><sub><span style="font-style:italic">i</span></sub>− </td><td class="dcell"><table class="display"><tr><td class="dcell" style="text-align:center">1</td></tr>
+<tr><td class="hbar"></td></tr>
+<tr><td class="dcell" style="text-align:center"><span style="font-style:italic">n</span></td></tr>
+</table></td><td class="dcell"><table class="display"><tr><td class="dcell" style="text-align:center"><span style="font-style:italic">n</span></td></tr>
+<tr><td class="dcell" style="text-align:center"><span style="font-size:xx-large">∑</span></td></tr>
+<tr><td class="dcell" style="text-align:center"><span style="font-style:italic">j</span>=1</td></tr>
+</table></td><td class="dcell"><span style="font-style:italic">x</span><sub><span style="font-style:italic">j</span></sub>)<sup>2</sup> ⟩ </td></tr>
+</table><p>
+expand the square and use linearity of integration
+</p><table class="display dcenter"><tr style="vertical-align:middle"><td class="dcell">⟨ </td><td class="dcell"><table class="display"><tr><td class="dcell" style="text-align:center">^</td></tr>
+<tr><td class="dcell" style="text-align:center"><span style="font-style:italic">v</span></td></tr>
+<tr><td class="dcell" style="text-align:center">&nbsp;</td></tr>
+</table></td><td class="dcell"> ⟩ =</td><td class="dcell"><table class="display"><tr><td class="dcell" style="text-align:center">1</td></tr>
+<tr><td class="hbar"></td></tr>
+<tr><td class="dcell" style="text-align:center"><span style="font-style:italic">n</span> − 1</td></tr>
+</table></td><td class="dcell"><table class="display"><tr><td class="dcell" style="text-align:center"><span style="font-style:italic">n</span></td></tr>
+<tr><td class="dcell" style="text-align:center"><span style="font-size:xx-large">∑</span></td></tr>
+<tr><td class="dcell" style="text-align:center"><span style="font-style:italic">i</span>=1</td></tr>
+</table></td><td class="dcell">⎛<br>
+⎝</td><td class="dcell">⟨ <span style="font-style:italic">x</span><sub><span style="font-style:italic">i</span></sub><sup>2</sup>⟩ − 2</td><td class="dcell"><table class="display"><tr><td class="dcell" style="text-align:center">1</td></tr>
+<tr><td class="hbar"></td></tr>
+<tr><td class="dcell" style="text-align:center"><span style="font-style:italic">n</span></td></tr>
+</table></td><td class="dcell"><table class="display"><tr><td class="dcell" style="text-align:center"><span style="font-style:italic">n</span></td></tr>
+<tr><td class="dcell" style="text-align:center"><span style="font-size:xx-large">∑</span></td></tr>
+<tr><td class="dcell" style="text-align:center"><span style="font-style:italic">j</span>=1</td></tr>
+</table></td><td class="dcell">⟨ <span style="font-style:italic">x</span><sub><span style="font-style:italic">i</span></sub><span style="font-style:italic">x</span><sub><span style="font-style:italic">j</span></sub> ⟩    +</td><td class="dcell"><table class="display"><tr><td class="dcell" style="text-align:center">1</td></tr>
+<tr><td class="hbar"></td></tr>
+<tr><td class="dcell" style="text-align:center"><span style="font-style:italic">n</span><sup>2</sup></td></tr>
+</table></td><td class="dcell"><table class="display"><tr><td class="dcell" style="text-align:center"><span style="font-style:italic">n</span></td></tr>
+<tr><td class="dcell" style="text-align:center"><span style="font-size:xx-large">∑</span></td></tr>
+<tr><td class="dcell" style="text-align:center"><span style="font-style:italic">j</span>=1</td></tr>
+</table></td><td class="dcell"><table class="display"><tr><td class="dcell" style="text-align:center"><span style="font-style:italic">n</span></td></tr>
+<tr><td class="dcell" style="text-align:center"><span style="font-size:xx-large">∑</span></td></tr>
+<tr><td class="dcell" style="text-align:center"><span style="font-style:italic">k</span>=1</td></tr>
+</table></td><td class="dcell">⟨ <span style="font-style:italic">x</span><sub><span style="font-style:italic">j</span></sub><span style="font-style:italic">x</span><sub><span style="font-style:italic">k</span></sub> ⟩  </td><td class="dcell">⎞<br>
+⎠</td></tr>
+</table><table class="display dcenter"><tr style="vertical-align:middle"><td class="dcell">Since the <span style="font-style:italic">x</span><sub><span style="font-style:italic">i</span></sub> are idd         ⟨ <span style="font-style:italic">x</span><sub><span style="font-style:italic">i</span></sub><span style="font-style:italic">x</span><sub><span style="font-style:italic">j</span></sub>⟩ =</td><td class="dcell"><table class="display"><tr style="vertical-align:middle"><td class="dcell">⎧<br>
+⎨<br>
+⎩</td><td class="dcell"><table style="border-spacing:6px;border-collapse:separate;" class="cellpading0"><tr><td style="text-align:left;white-space:nowrap" >⟨ <span style="font-style:italic">x</span><sub><span style="font-style:italic">i</span></sub> ⟩ ⟨ <span style="font-style:italic">x</span><sub><span style="font-style:italic">j</span></sub> ⟩ = ⟨ <span style="font-style:italic">x</span>⟩ <sup>2</sup></td><td style="text-align:left;white-space:nowrap" >if <span style="font-style:italic">i</span>≠ <span style="font-style:italic">j</span></td></tr>
+<tr><td style="text-align:left;white-space:nowrap" > ⟨ <span style="font-style:italic">x</span><sub><span style="font-style:italic">i</span></sub><sup>2</sup> ⟩ =⟨ <span style="font-style:italic">x</span><sup>2</sup> ⟩ </td><td style="text-align:left;white-space:nowrap" >if <span style="font-style:italic">i</span>=<span style="font-style:italic">j</span>
+</td></tr>
+</table></td></tr>
+</table></td></tr>
+</table><table class="display dcenter"><tr style="vertical-align:middle"><td class="dcell">
+     
+
+</td><td class="dcell"><table style="border-spacing:6px;border-collapse:separate;" class="cellpading0"><tr><td style="text-align:right;white-space:nowrap" ><table class="display"><tr style="vertical-align:middle"><td class="dcell">and thus from Eq. (<a href="#eq%3Avar">3</a>)    ⟨ </td><td class="dcell"><table class="display"><tr><td class="dcell" style="text-align:center">^</td></tr>
+<tr><td class="dcell" style="text-align:center"><span style="font-style:italic">v</span></td></tr>
+<tr><td class="dcell" style="text-align:center">&nbsp;</td></tr>
+</table></td><td class="dcell"> ⟩  = </td><td class="dcell"><table class="display"><tr><td class="dcell" style="text-align:center"><span style="font-style:italic">n</span></td></tr>
+<tr><td class="hbar"></td></tr>
+<tr><td class="dcell" style="text-align:center"><span style="font-style:italic">n</span> − 1</td></tr>
+</table></td><td class="dcell">⎡<br>
+⎣</td><td class="dcell">⟨ <span style="font-style:italic">x</span><sup>2</sup>⟩ − 2</td><td class="dcell"><table class="display"><tr><td class="dcell" style="text-align:center">1</td></tr>
+<tr><td class="hbar"></td></tr>
+<tr><td class="dcell" style="text-align:center"><span style="font-style:italic">n</span></td></tr>
+</table></td><td class="dcell">( ⟨ <span style="font-style:italic">x</span><sup>2</sup> ⟩ +(<span style="font-style:italic">n</span>−1)⟨ <span style="font-style:italic">x</span> ⟩ <sup>2</sup> )   +</td><td class="dcell"><table class="display"><tr><td class="dcell" style="text-align:center">1</td></tr>
+<tr><td class="hbar"></td></tr>
+<tr><td class="dcell" style="text-align:center"><span style="font-style:italic">n</span></td></tr>
+</table></td><td class="dcell">( ⟨ <span style="font-style:italic">x</span><sup>2</sup> ⟩ +(<span style="font-style:italic">n</span> − 1)⟨ <span style="font-style:italic">x</span> ⟩ <sup>2</sup> )</td><td class="dcell">⎤<br>
+⎦</td><td class="dcell">= ⟨ <span style="font-style:italic">v</span>⟩ 
+</td></tr>
+</table></td><td style="text-align:left;white-space:nowrap" >&nbsp;</td><td style="text-align:right;white-space:nowrap" >&nbsp;</td><td style="text-align:left;white-space:nowrap" >&nbsp;</td><td style="text-align:right;white-space:nowrap" >&nbsp;</td><td style="text-align:left;white-space:nowrap" >&nbsp;</td><td style="text-align:right;white-space:nowrap" >&nbsp;</td><td style="text-align:left;white-space:nowrap" >&nbsp;</td><td style="text-align:right;white-space:nowrap" >&nbsp;</td><td style="text-align:left;white-space:nowrap" >&nbsp;</td><td style="text-align:right;white-space:nowrap" >&nbsp;</td></tr>
+</table></td></tr>
+</table><p>
+q.e.d.
+Note that if we want to estimate another function of the stochastic variable <span style="font-style:italic">x</span> that depends on the population mean and variance (or standard deviation) the sample estimate loses two dof’s. 
+And if you are still not convinced ,think about how to estimate the variance from a sample of size one (it is undefined) or two (there is no other measure but the distance).
+</p><!--CUT END -->
+<!--HTMLFOOT-->
+<!--ENDHTML-->
+<!--FOOTER-->
+<hr style="height:2"><blockquote class="quote"><em>This document was translated from L<sup>A</sup>T<sub>E</sub>X by
+</em><a href="http://hevea.inria.fr/index.html"><em>H</em><em><span style="font-size:small"><sup>E</sup></span></em><em>V</em><em><span style="font-size:small"><sup>E</sup></span></em><em>A</em></a><em>.</em></blockquote></body>
+</html>
